@@ -41,10 +41,10 @@ app.get('/api/:date?', (req, res) => {
       res.json({ unix: rdate.getTime(), utc: rdate.toUTCString() })
     } else if (regexdigits.test(req.params.date)) {
       rdate = new Date(parseInt(req.params.date));
-      res.json({ unix: rdate.getTime(), utc: rdate.toUTCString() })
+      res.json({ unix: rdate.getTime(), utc: rdate.toUTCString() });
     } else {
       let rdate = new Date(req.params.date);
-      if(rdate){
+      if(rdate.toString() === "Invalid Date"){
         res.json({ error: "Invalid Date" });
       } else {
         res.json({ unix: rdate.getTime(), utc: rdate.toUTCString() })
